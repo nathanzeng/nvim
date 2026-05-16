@@ -2,10 +2,11 @@
 -- https://www.reddit.com/r/neovim/comments/1f7jj15/how_do_you_work_without_diffviewnvim/
 
 vim.schedule(function()
-  -- NOTE: using the actively maintained fork
   vim.pack.add({ 'https://github.com/dlyongemallo/diffview.nvim' })
 
   require('diffview').setup({
+    show_root_path = false, -- Whether to show repo root path
+    show_help_hints = false,
     file_panel = {
       win_config = {
         position = 'bottom',
@@ -14,7 +15,7 @@ vim.schedule(function()
         win_opts = { cursorlineopt = 'both' },
       },
     },
-    -- Some custom file panel keymaps
+    -- Keymaps
     keymaps = {
       file_panel = {
         {
@@ -23,17 +24,20 @@ vim.schedule(function()
           function()
             require('diffview.config').actions.goto_file_edit_close()
           end,
-          { desc = 'Open the file in the previous tabpage' },
+          { desc = '[g]o to [f]ile' },
         },
+      },
+      view = {
         {
           'n',
-          '<leader>gd',
-          vim.cmd.DiffviewToggle,
-          { desc = 'Toggle the diffview' },
+          'gf',
+          function()
+            require('diffview.config').actions.goto_file_edit_close()
+          end,
+          { desc = '[g]o to [f]ile' },
         },
       },
     },
-    show_help_hints = false,
   })
 
   vim.keymap.set('n', '<leader>gd', vim.cmd.DiffviewToggle, { desc = '[d]iff' })
