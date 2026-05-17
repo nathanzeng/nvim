@@ -76,6 +76,7 @@ vim.schedule(function()
     clues = {
       { mode = 'n', keys = '<Leader>l', desc = 'LSP' },
       { mode = 'n', keys = '<Leader>f', desc = '[f]ind' },
+      { mode = 'n', keys = '<Leader>r', desc = '[r]un debug' },
       miniclue.gen_clues.square_brackets(),
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),

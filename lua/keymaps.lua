@@ -20,6 +20,9 @@ vim.keymap.set('n', 'q', '<cmd>q<CR>', { desc = '[q]uit window' })
 -- More ergonomic keymap for pasting from the yank register
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = '[p]aste from yank register "0' })
 
+-- Note: native functionality is to delete everything on the line preceding the cursor
+vim.keymap.set('i', '<C-u>', '<Esc>gUiw`]a', { desc = '[u]pper case the word before cursor' })
+
 -- Restart neovim
 vim.keymap.set('n', '<leader>n', '<cmd>restart<CR>', { desc = '[n]eovim restart' })
 
@@ -37,7 +40,6 @@ vim.keymap.set('n', '<C-down>', '<C-w>+', { desc = 'Increase window height' })
 
 -- [[ Diagnostics ]]
 vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, { desc = 'Diagnostic quickfix list, for buffer' })
-
 vim.keymap.set('n', '<leader>d', function()
   vim.diagnostic.open_float()
 end, { desc = '[d]iagnostic window' })
