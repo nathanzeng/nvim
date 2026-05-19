@@ -10,6 +10,9 @@ vim.keymap.set({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true }
 vim.keymap.set('n', '<CR>', 'o<Esc>')
 vim.keymap.set('n', '<S-CR>', 'O<Esc>')
 
+-- Alternate file (last edited file)
+vim.keymap.set('n', '<BS>', '<C-^>')
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
