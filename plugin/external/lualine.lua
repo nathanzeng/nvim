@@ -67,9 +67,12 @@ local oil = {
     lualine_a = {
       function()
         local oil = require('oil')
+        -- Directory relative to current working directory
         local directory = vim.fn.fnamemodify(oil.get_current_dir(), ':.')
+
         if directory == '' then
-          return '󰉋 ' .. vim.fn.fnamemodify(oil.get_current_dir(), ':~')
+          -- Only the tail (final directory) of the cwd
+          return '󰉋 ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
         else
           return '󰙅 ' .. directory
         end
