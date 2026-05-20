@@ -43,15 +43,6 @@ local function column()
   return ' ' .. vim.fn.col('.')
 end
 
-local function hide(min_width)
-  return function(str)
-    if vim.fn.winwidth(0) < min_width then
-      return ''
-    end
-    return str
-  end
-end
-
 local function truncateToFirstChar(min_width)
   return function(str)
     if vim.fn.winwidth(0) < min_width then
@@ -86,6 +77,17 @@ local oil = {
   filetypes = { 'oil' },
 }
 
+local function path()
+  -- Cannot do just `:h` because buffers jumped to with LSP will display full path
+  local dir = vim.fn.expand('%:p:.:h')
+
+  if dir == '.' then
+    return ''
+  else
+    return dir
+  end
+end
+
 require('lualine').setup({
   options = {
     theme = custom_nord,
@@ -100,15 +102,7 @@ require('lualine').setup({
       { 'filename', path = 0, file_status = false, padding = { left = 0, right = 1 } },
     },
     lualine_b = { 'diagnostics', 'diff', { 'branch', icon = '' } },
-    lualine_c = {
-      {
-        'filename',
-        newfile_status = true, -- Display new file status (new file means no write after created)
-        file_status = false,
-        path = 1,
-        fmt = hide(101),
-      },
-    },
+    lualine_c = { path },
     lualine_x = {},
     lualine_y = { progress, column },
     lualine_z = { { 'mode', fmt = truncateToFirstChar(101) } },
