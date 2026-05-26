@@ -55,10 +55,12 @@ require('gitsigns').setup({
       -- blame_line with the full commit message and hunk changes
       gitsigns.blame_line({ full = true })
     end, { desc = '[l]ine git blame' })
-    -- map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
-    -- map('n', '<leader>hD', function()
-    --   gitsigns.diffthis '@'
-    -- end, { desc = 'git [D]iff against last commit' })
+    -- TODO: when you want to go though the pain of a new mapping, consider
+    -- changing this to gd/gD and difview to just <leader>v
+    map('n', '<leader>gc', gitsigns.diffthis, { desc = '[c]hanges against index' })
+    map('n', '<leader>gC', function()
+      gitsigns.diffthis('@')
+    end, { desc = '[C]hanges against last commit' })
 
     -- I found this line blame to be useless, there are more config options though
     -- map('n', '<leader>gl', gitsigns.toggle_current_line_blame, { desc = 'Toggle git blame [l]ine' })
@@ -69,5 +71,3 @@ require('gitsigns').setup({
     -- map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
   end,
 })
-
--- vim: ts=2 sts=2 sw=2 et
