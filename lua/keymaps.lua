@@ -20,8 +20,9 @@ vim.keymap.set('n', '<BS>', '<C-^>')
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- NOTE: the native functionality for q is to record a macro, removing that for now
+-- q to quit and leader q to macro
 vim.keymap.set('n', 'q', '<cmd>q<CR>', { desc = '[q]uit window' })
+vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 
 -- More ergonomic keymap for pasting from the yank register
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = '[p]aste from yank register "0' })
