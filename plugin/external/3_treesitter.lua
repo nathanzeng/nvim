@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Consider keeping the following (copied) code up to date with core:
 -- Incremental selection, 'an' and 'in' defaults remapped to up and down arrow
-vim.keymap.set({ 'x', 'o' }, '<up>', function()
+vim.keymap.set({ 'n', 'x', 'o' }, '<up>', function()
   if vim.treesitter.get_parser(nil, nil, { error = false }) then
     require('vim.treesitter._select').select_parent(vim.v.count1)
   else
@@ -67,7 +67,7 @@ vim.keymap.set({ 'x', 'o' }, '<up>', function()
   end
 end, { desc = 'Select parent (outer) node' })
 
-vim.keymap.set({ 'x', 'o' }, '<down>', function()
+vim.keymap.set({ 'n', 'x', 'o' }, '<down>', function()
   if vim.treesitter.get_parser(nil, nil, { error = false }) then
     require('vim.treesitter._select').select_child(vim.v.count1)
   else
