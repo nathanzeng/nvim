@@ -167,6 +167,8 @@ local servers = {
       'vue',
     },
   },
+  -- tsgo = {},
+
   -- https://github.com/vuejs/language-tools/wiki/Neovim
   -- vtsls = {
   --   settings = {
