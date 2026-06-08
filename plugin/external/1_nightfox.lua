@@ -12,7 +12,7 @@ local diff_green = Color.from_hex(background):blend(Color.from_hex('#a3be8c'), 0
 local specs = {
   nordfox = {
     -- The below file shows the default values for syntax
-    -- https://github.com/EdenEast/nightfox.nvim/blob/main/lua/nightfox/palette/nightfox.lua
+    -- https://github.com/EdenEast/nightfox.nvim/blob/main/lua/nightfox/palette/nordfox.lua
     syntax = {
       -- Specs allow you to define a value using either a color or template. If the string does
       -- start with `#` the string will be used as the path of the palette table. Defining just
@@ -21,13 +21,14 @@ local specs = {
       number = 'magenta',
       const = 'magenta',
       builtin0 = 'orange',
-      -- TODO: I preferred preproc as blue?
-      -- TODO: replace all magenta with pink? (which one is easier to see)
     },
     diff = {
       -- add = diff_green:to_css(),
       -- delete = diff_red:to_css(),
       text = diff_blue:to_css(),
+    },
+    git = {
+      changed = 'blue',
     },
   },
 }
