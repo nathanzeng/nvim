@@ -47,11 +47,6 @@ vim.o.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 250
 
--- Decrease mapped sequence wait time
--- TODO: kickstart had this at 300
--- I think that is too fast/hard when whichkey is turned off
-vim.o.timeoutlen = 300
-
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
