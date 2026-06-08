@@ -6,7 +6,7 @@ vim.schedule(function()
 
   require('diffview').setup({
     show_root_path = false, -- Whether to show repo root path
-    show_help_hints = false,
+    show_help_hints = false, -- Pretty sure this is g? most places
     file_panel = {
       win_config = {
         position = 'bottom',
@@ -27,6 +27,7 @@ vim.schedule(function()
           { desc = '[g]o to [f]ile' },
         },
       },
+      -- For view, I want to copy over some of the file panel keymaps
       view = {
         {
           'n',
@@ -36,9 +37,33 @@ vim.schedule(function()
           end,
           { desc = '[g]o to [f]ile' },
         },
+        {
+          'n',
+          's',
+          function()
+            require('diffview.config').actions.toggle_stage_entry()
+          end,
+          { desc = '[s]tage entry toggle' },
+        },
+        {
+          'n',
+          'S',
+          function()
+            require('diffview.config').actions.stage_all()
+          end,
+          { desc = '[S]tage all' },
+        },
+        {
+          'n',
+          'U',
+          function()
+            require('diffview.config').actions.unstage_all()
+          end,
+          { desc = '[U]nstage all' },
+        },
       },
     },
   })
 
-  vim.keymap.set('n', '<leader>gd', vim.cmd.DiffviewToggle, { desc = '[d]iff' })
+  vim.keymap.set('n', '<leader>v', vim.cmd.DiffviewToggle, { desc = '[v]iew git diff' })
 end)

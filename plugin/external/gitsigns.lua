@@ -55,12 +55,10 @@ require('gitsigns').setup({
       -- blame_line with the full commit message and hunk changes
       gitsigns.blame_line({ full = true })
     end, { desc = '[l]ine git blame' })
-    -- TODO: when you want to go though the pain of a new mapping, consider
-    -- changing this to gd/gD and difview to just <leader>v
-    map('n', '<leader>gc', gitsigns.diffthis, { desc = '[c]hanges against index' })
-    map('n', '<leader>gC', function()
+    map('n', '<leader>gd', gitsigns.diffthis, { desc = '[d]iff' })
+    map('n', '<leader>gD', function()
       gitsigns.diffthis('@')
-    end, { desc = '[C]hanges against last commit' })
+    end, { desc = '[D]iff against last commit' })
 
     -- I found this line blame to be useless, there are more config options though
     -- map('n', '<leader>gl', gitsigns.toggle_current_line_blame, { desc = 'Toggle git blame [l]ine' })
