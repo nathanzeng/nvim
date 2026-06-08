@@ -39,6 +39,7 @@ local filetypes = {
   'git_rebase',
   'yaml',
   'graphql',
+  'xml',
 }
 -- Force install on following line was neccesary when migrating from lazy
 require('nvim-treesitter').install(filetypes)
