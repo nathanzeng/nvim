@@ -48,13 +48,11 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('treesitter', { clear = true }),
   pattern = filetypes,
   callback = function(args)
-    -- Blacklist: treesitter does not work for graphql with our lighthouse resolvers and whatnot
-    -- if args.match == 'graphql' then
-    --   return
-    -- end
-
     vim.treesitter.start()
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    -- Treesitter based indentation for filetypes outside blacklist
+    if args.match ~= 'php' then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
   end,
 })
 
