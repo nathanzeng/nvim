@@ -14,7 +14,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "diffview.nvim": {
-      "rev": "9d29217914bf06a24bf6171e595b6cd20f791d32",
+      "rev": "318a75a8899cdb0894ca432bf471b466adf785d2",
       "src": "https://github.com/dlyongemallo/diffview.nvim"
     },
     "gitsigns.nvim": {
@@ -22,7 +22,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "leap.nvim": {
-      "rev": "d3641f9aa86e7460b14d9f4479e7454f88cc6b2d",
+      "rev": "d7f8ee64155b7790188f17a993390f32577cfb81",
       "src": "https://codeberg.org/andyg/leap.nvim.git"
     },
     "lualine.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.nvim": {
-      "rev": "b2ac6522f7a54b475d9fad711b938eefc6d3d0a6",
+      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nightfox.nvim": {
@@ -54,11 +54,11 @@
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-view": {
-      "rev": "3f328fc8d59835b09b65f85cd62cb255bf93dce5",
+      "rev": "91a2b0eab74cc889499587166cc6e3d53a7e1e45",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lspconfig": {
-      "rev": "229b79051b380377664edc4cbd534930154921a1",
+      "rev": "ed19590a3a9792901553c388d1aadafce012f80d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
