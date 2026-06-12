@@ -26,14 +26,6 @@ vim.o.guicursor = 'i-r-t:block-InsertCursor'
 vim.o.cursorline = true
 vim.o.cursorlineopt = 'number'
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
-
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -91,5 +83,4 @@ vim.o.confirm = true
 -- Globally set window borders to rounded
 vim.o.winborder = 'rounded'
 
--- I'm not really sure how I feel about this yet
 vim.o.swapfile = false

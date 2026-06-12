@@ -24,8 +24,13 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', 'q', '<cmd>q<CR>', { desc = '[q]uit window' })
 vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 
--- More ergonomic keymap for pasting from the yank register
-vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = '[p]aste from yank register "0' })
+-- Paste and yank to system clipboard
+vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = '[p]aste from system clipboard' })
+vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = '[P]aste from system clipboard' })
+vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = '[y]ank into system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank into system clipboard' })
+-- Paste from yank register
+vim.keymap.set({ 'n', 'x' }, '<leader>op', '"0p', { desc = 'Paste from yank register "0' })
 
 -- Note: native functionality is to delete everything on the line preceding the cursor
 vim.keymap.set('i', '<C-u>', '<Esc>gUiw`]a', { desc = '[u]pper case the word before cursor' })
