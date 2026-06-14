@@ -195,8 +195,6 @@ local servers = {
   -- },
   vue_ls = {},
 
-  -- If you decide the no type info available thing is too noisy, can turn off here
-  -- https://www.reddit.com/r/neovim/comments/1tyzqgz/php_intelephense_neovim_lua_config_issue/
   intelephense = {
     -- init_options = {
     --   clearCache = true,
@@ -222,6 +220,12 @@ local servers = {
             'global/**',
             '**/vendor/composer/**',
             '**/vendor/_laravel_idea/**',
+          },
+        },
+        diagnostics = {
+          exclude = {
+            -- No type information available warning is noisy since not previously adhered to at RPHQ
+            ['*.php'] = { 'P1132' },
           },
         },
         -- NOTE: uncoment below and use `:lua vim.lsp.codelens.enable()`
