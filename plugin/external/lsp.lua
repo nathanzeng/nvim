@@ -1,4 +1,3 @@
--- Main LSP Configuration
 vim.pack.add({
   'https://github.com/mason-org/mason.nvim',
   'https://github.com/neovim/nvim-lspconfig',
@@ -95,7 +94,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Diagnostic Config
--- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
   severity_sort = true,
   float = { border = 'rounded', source = 'if_many' },
@@ -130,25 +128,11 @@ vim.diagnostic.config({
   },
 })
 
---  Add any additional override configuration in the following tables. Available keys are:
---  - cmd (table): Override the default command used to start the server
---  - filetypes (table): Override the default list of associated filetypes for the server
---  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
---  - settings (table): Override the default settings passed when initializing the server.
---        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-
 local vue_language_server_path = vim.fn.expand('$MASON/packages')
   .. '/vue-language-server'
   .. '/node_modules/@vue/language-server'
 
 local servers = {
-  -- NOTE: Some languages (like typescript) have entire language plugins that can be useful:
-  --    https://github.com/pmizio/typescript-tools.nvim
-  --    vts_ls and the above thing are both options
-  --    I tried vts_ls and it sometimes has duplicate definitons in imports where ts_ls jumps to definition correctly
-  --    Keep an eye on go typescript too
-  --
-  -- But for many setups, the LSP (`ts_ls`) will work just fine
   ts_ls = {
     init_options = {
       plugins = {
@@ -167,32 +151,6 @@ local servers = {
       'vue',
     },
   },
-  -- tsgo = {},
-
-  -- https://github.com/vuejs/language-tools/wiki/Neovim
-  -- vtsls = {
-  --   settings = {
-  --     vtsls = {
-  --       tsserver = {
-  --         globalPlugins = {
-  --           {
-  --             name = '@vue/typescript-plugin',
-  --             location = vue_language_server_path,
-  --             languages = { 'vue' },
-  --             configNamespace = 'typescript',
-  --           },
-  --         },
-  --       },
-  --     },
-  --   },
-  --   filetypes = {
-  --     'typescript',
-  --     'javascript',
-  --     'javascriptreact',
-  --     'typescriptreact',
-  --     'vue',
-  --   },
-  -- },
   vue_ls = {},
 
   intelephense = {
@@ -268,6 +226,7 @@ local servers = {
     --   },
     -- },
   },
+
   eslint = {},
 
   stylua = {},
@@ -318,13 +277,20 @@ local servers = {
     },
   },
 
-  -- i think this maps to json-lsp in mason? the gh links don't match tho
+  -- json-lsp in mason
   jsonls = {},
 }
 
+-- gitignored file for language servers that don't need to be tracked
+-- Put in lua/local_lsp.lua
+local has_local, local_servers = pcall(require, 'local_lsp')
+if has_local then
+  servers = vim.tbl_deep_extend('error', servers, local_servers)
+end
+
 -- Now setup those configurations
-for name, server in pairs(servers) do
-  vim.lsp.config(name, server)
+for name, config in pairs(servers) do
+  vim.lsp.config(name, config)
   vim.lsp.enable(name)
 end
 
