@@ -28,7 +28,7 @@ vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = '[p]aste from system clipboard' })
 vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = '[P]aste from system clipboard' })
 vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = '[y]ank into system clipboard' })
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+y$', { desc = '[Y]ank into system clipboard' })
 -- Paste from yank register
 vim.keymap.set({ 'n', 'x' }, '<leader>op', '"0p', { desc = 'Paste from yank register "0' })
 
