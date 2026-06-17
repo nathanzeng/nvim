@@ -1,4 +1,5 @@
 vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+-- vim.pack.add({ 'file:///home/nathan/workspace/oil-nathan' })
 
 require('oil').setup({
   view_options = {
