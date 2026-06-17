@@ -2,7 +2,7 @@ vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite' })
 vim.keymap.set('n', '<leader>x', '<cmd>xa!<CR>', { desc = 'Quit [x]a!' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Move by screen lines when no count prefix
+-- j and k move by screen lines when no count prefix
 vim.keymap.set({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 vim.keymap.set({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 -- Better H and L
@@ -13,6 +13,13 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { desc = 'Go to first non-blank char
 -- Enter and Shift+Enter to get new line below and above without entering insert mode
 vim.keymap.set('n', '<CR>', 'o<Esc>')
 vim.keymap.set('n', '<S-CR>', 'O<Esc>')
+-- Undo the keybind for qf buffers
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'qf' },
+  callback = function(ev)
+    vim.keymap.set('n', '<CR>', '<CR>', { buf = ev.buf })
+  end,
+})
 
 -- Alternate file (last edited file)
 vim.keymap.set('n', '<BS>', '<C-^>')
@@ -56,14 +63,6 @@ vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, { desc = 'Diagnostic
 vim.keymap.set('n', '<leader>d', function()
   vim.diagnostic.open_float()
 end, { desc = '[d]iagnostic window' })
-
--- Undo my enter keybind for qf buffers
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'qf' },
-  callback = function(ev)
-    vim.keymap.set('n', '<CR>', '<CR>', { buf = ev.buf })
-  end,
-})
 
 -- [[ Spell Check ]]
 local function toggle_spell_check()
