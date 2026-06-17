@@ -16,11 +16,11 @@ vim.o.ruler = false
 -- Show partial command flickers j and k when scrolling
 vim.o.showcmd = false
 
--- Keep the cursor fat in all modes, use highlighting for insert modes
--- TODO: what is the select mode shown in the status line after autocompleting a function
--- feel like that should get the orange highlight
 vim.api.nvim_set_hl(0, 'InsertCursor', { bg = '#81a1c1' })
-vim.o.guicursor = 'i-r-t-c:block-InsertCursor'
+-- TODO: little annoying that i can't target select mode
+-- See :h guicursor
+-- Block cursor in all modes, change color for insert modes, underline for replace
+vim.o.guicursor = 'i-r-t-c:block-InsertCursor,r:hor20'
 
 -- Only highlight the cursorline number
 vim.o.cursorline = true
