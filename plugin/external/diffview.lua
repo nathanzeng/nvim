@@ -40,8 +40,7 @@ vim.schedule(function()
   }
 
   -- View keymaps are my custom keymaps, plus some of the default file panel ones
-  local view_keymaps = vim.deepcopy(shared_keymaps)
-  view_keymaps = vim.list_extend(view_keymaps, {
+  local view_keymaps = vim.list_extend(vim.deepcopy(shared_keymaps), {
     {
       'n',
       's',
