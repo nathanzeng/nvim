@@ -4,6 +4,78 @@
 vim.schedule(function()
   vim.pack.add({ 'https://github.com/dlyongemallo/diffview.nvim' })
 
+  local shared_keymaps = {
+    {
+      'n',
+      'gf',
+      function()
+        require('diffview.config').actions.goto_file_edit_close()
+      end,
+      { desc = '[g]o to [f]ile' },
+    },
+    {
+      'n',
+      'ge',
+      function()
+        require('diffview.config').actions.goto_file_edit()
+      end,
+      { desc = '[g]o to file [e]dit' },
+    },
+    {
+      'n',
+      '<C-n>',
+      function()
+        require('diffview.config').actions.select_next_entry()
+      end,
+      { desc = '[n]ext entry' },
+    },
+    {
+      'n',
+      '<C-p>',
+      function()
+        require('diffview.config').actions.select_prev_entry()
+      end,
+      { desc = '[p]rev entry' },
+    },
+  }
+
+  -- View keymaps are my custom keymaps, plus some of the default file panel ones
+  local view_keymaps = vim.deepcopy(shared_keymaps)
+  view_keymaps = vim.list_extend(view_keymaps, {
+    {
+      'n',
+      's',
+      function()
+        require('diffview.config').actions.toggle_stage_entry()
+      end,
+      { desc = '[s]tage entry toggle' },
+    },
+    {
+      'n',
+      'S',
+      function()
+        require('diffview.config').actions.stage_all()
+      end,
+      { desc = '[S]tage all' },
+    },
+    {
+      'n',
+      'U',
+      function()
+        require('diffview.config').actions.unstage_all()
+      end,
+      { desc = '[U]nstage all' },
+    },
+    {
+      'n',
+      'X',
+      function()
+        require('diffview.config').actions.restore_entry()
+      end,
+      { desc = 'Restore entry' },
+    },
+  })
+
   require('diffview').setup({
     show_root_path = false, -- Whether to show repo root path
     show_help_hints = false, -- Pretty sure this is g? most places
@@ -16,101 +88,9 @@ vim.schedule(function()
       },
     },
     -- Keymaps
-    -- TODO: we can consolidate these to avoid duplication
     keymaps = {
-      file_panel = {
-        {
-          'n',
-          'gf',
-          function()
-            require('diffview.config').actions.goto_file_edit_close()
-          end,
-          { desc = '[g]o to [f]ile' },
-        },
-        {
-          'n',
-          'ge',
-          function()
-            require('diffview.config').actions.goto_file_edit()
-          end,
-          { desc = '[g]o to file [e]dit' },
-        },
-        {
-          'n',
-          '<C-n>',
-          function()
-            require('diffview.config').actions.select_next_entry()
-          end,
-          { desc = '[n]ext entry' },
-        },
-        {
-          'n',
-          '<C-p>',
-          function()
-            require('diffview.config').actions.select_prev_entry()
-          end,
-          { desc = '[p]rev entry' },
-        },
-      },
-      -- For view, I want to copy over some of the file panel keymaps
-      view = {
-        {
-          'n',
-          'gf',
-          function()
-            require('diffview.config').actions.goto_file_edit_close()
-          end,
-          { desc = '[g]o to [f]ile' },
-        },
-        {
-          'n',
-          'ge',
-          function()
-            require('diffview.config').actions.goto_file_edit()
-          end,
-          { desc = '[g]o to file [e]dit' },
-        },
-        {
-          'n',
-          '<C-n>',
-          function()
-            require('diffview.config').actions.select_next_entry()
-          end,
-          { desc = '[n]ext entry' },
-        },
-        {
-          'n',
-          '<C-p>',
-          function()
-            require('diffview.config').actions.select_prev_entry()
-          end,
-          { desc = '[p]rev entry' },
-        },
-        {
-          'n',
-          's',
-          function()
-            require('diffview.config').actions.toggle_stage_entry()
-          end,
-          { desc = '[s]tage entry toggle' },
-        },
-        {
-          'n',
-          'S',
-          function()
-            require('diffview.config').actions.stage_all()
-          end,
-          { desc = '[S]tage all' },
-        },
-        {
-          'n',
-          'U',
-          function()
-            require('diffview.config').actions.unstage_all()
-          end,
-          { desc = '[U]nstage all' },
-        },
-      },
+      file_panel = shared_keymaps,
+      view = view_keymaps,
     },
   })
 
