@@ -16,6 +16,7 @@ vim.schedule(function()
       },
     },
     -- Keymaps
+    -- TODO: we can consolidate these to avoid duplication
     keymaps = {
       file_panel = {
         {
@@ -25,6 +26,30 @@ vim.schedule(function()
             require('diffview.config').actions.goto_file_edit_close()
           end,
           { desc = '[g]o to [f]ile' },
+        },
+        {
+          'n',
+          'ge',
+          function()
+            require('diffview.config').actions.goto_file_edit()
+          end,
+          { desc = '[g]o to file [e]dit' },
+        },
+        {
+          'n',
+          '<C-n>',
+          function()
+            require('diffview.config').actions.select_next_entry()
+          end,
+          { desc = '[n]ext entry' },
+        },
+        {
+          'n',
+          '<C-p>',
+          function()
+            require('diffview.config').actions.select_prev_entry()
+          end,
+          { desc = '[p]rev entry' },
         },
       },
       -- For view, I want to copy over some of the file panel keymaps
@@ -36,6 +61,30 @@ vim.schedule(function()
             require('diffview.config').actions.goto_file_edit_close()
           end,
           { desc = '[g]o to [f]ile' },
+        },
+        {
+          'n',
+          'ge',
+          function()
+            require('diffview.config').actions.goto_file_edit()
+          end,
+          { desc = '[g]o to file [e]dit' },
+        },
+        {
+          'n',
+          '<C-n>',
+          function()
+            require('diffview.config').actions.select_next_entry()
+          end,
+          { desc = '[n]ext entry' },
+        },
+        {
+          'n',
+          '<C-p>',
+          function()
+            require('diffview.config').actions.select_prev_entry()
+          end,
+          { desc = '[p]rev entry' },
         },
         {
           'n',
