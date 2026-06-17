@@ -109,3 +109,6 @@ require('mini.notify').setup({
   -- },
 })
 vim.notify = MiniNotify.make_notify()
+
+-- nvim dev testing
+-- require('mini.sessions').setup()
