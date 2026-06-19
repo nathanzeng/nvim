@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --  To jump back, press <C-t>.
     map('<leader>ld', require('telescope.builtin').lsp_definitions, '[d]efinition')
 
-    -- WARN: This is not Goto Definition, this is Goto Declaration.
+    -- NOTE: This is not Goto Definition, this is Goto Declaration.
     --  For example, in C this would take you to the header.
     map('<leader>lD', vim.lsp.buf.declaration, '[D]eclaration')
 
