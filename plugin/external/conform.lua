@@ -43,6 +43,7 @@ vim.schedule(function()
     },
   })
 
+  -- Sometimes I want to be able to save without formatting
   vim.api.nvim_create_user_command('ConformDisableAuto', function()
     vim.g.disable_autoformat = true
   end, {
