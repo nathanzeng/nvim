@@ -18,9 +18,11 @@ vim.schedule(function()
     --  All the info you're looking for is in `:help telescope.setup()`
     --
     defaults = {
-      -- mappings = {
-      --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      -- },
+      mappings = {
+        i = {
+          ['<C-y>'] = 'select_default',
+        },
+      },
 
       -- I want to be able to see hidden files but not the ones in .git/ (the git refs and such)
       file_ignore_patterns = { '%.git/' },
@@ -40,7 +42,7 @@ vim.schedule(function()
       help_tags = {
         mappings = {
           -- Open the help tags vertically
-          i = { ['<CR>'] = 'select_vertical' },
+          i = { ['<CR>'] = 'select_vertical', ['<C-y>'] = 'select_vertical' },
         },
       },
       buffers = {
@@ -56,6 +58,11 @@ vim.schedule(function()
     extensions = {
       ['ui-select'] = {
         require('telescope.themes').get_dropdown(),
+        mappings = {
+          i = {
+            ['<C-y>'] = 'select_default',
+          },
+        },
       },
     },
   })
