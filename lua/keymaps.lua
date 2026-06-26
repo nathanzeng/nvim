@@ -87,3 +87,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+-- Copies the file and line number to clipboard
+vim.keymap.set('n', '<leader>a', function()
+  local location = ('%s line %s'):format(vim.fn.expand('%:.'), vim.api.nvim_win_get_cursor(0)[1])
+  vim.fn.setreg('+', location)
+  vim.notify('Copied to clipboard: ' .. location)
+end, { desc = 'Copy file relative path and line number to clipboard' })
