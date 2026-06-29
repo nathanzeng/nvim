@@ -85,6 +85,12 @@ vim.schedule(function()
         -- Maintain the full cursorline in the file panel
         win_opts = { cursorlineopt = 'both' },
       },
+      -- Since the file panel is at the bottom with limited vertical space
+      -- It's much nicer to have full filepaths as opposed to the tree/folder view
+      listing_style = 'list',
+      list_options = {
+        path_style = 'full',
+      },
     },
     -- Keymaps
     keymaps = {
