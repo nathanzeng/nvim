@@ -74,8 +74,8 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "oil.nvim": {
-      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
-      "src": "https://github.com/stevearc/oil.nvim"
+      "rev": "2e3be4a264ef44b5a1f35af85c6ff047ebce2f4a",
+      "src": "https://github.com/nathanzeng/oil.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
