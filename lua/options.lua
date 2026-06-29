@@ -20,7 +20,7 @@ vim.api.nvim_set_hl(0, 'InsertCursor', { bg = '#81a1c1' })
 -- TODO: little annoying that i can't target select mode
 -- See :h guicursor
 -- Block cursor in all modes, change color for insert modes, underline for replace
-vim.o.guicursor = 'i-r-t-c:block-InsertCursor,r:hor20'
+vim.o.guicursor = 'i-t-c:block-InsertCursor,r-o:hor20'
 
 -- Only highlight the cursorline number
 vim.o.cursorline = true
