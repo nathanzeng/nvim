@@ -23,11 +23,6 @@ end
 -- To act on install from lockfile, run before very first `vim.pack.add()`
 vim.api.nvim_create_autocmd('PackChanged', { callback = hooks })
 
--- Sync with the lockfile
-vim.api.nvim_create_user_command('PackSync', function()
-  vim.pack.update(nil, { target = 'lockfile' })
-end, { desc = 'Sync plugins with the lockfile' })
-
 require('options')
 
 require('keymaps')
