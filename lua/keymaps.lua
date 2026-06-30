@@ -95,3 +95,5 @@ vim.keymap.set('n', '<leader>a', function()
   vim.fn.setreg('+', location)
   vim.notify('Copied to clipboard: ' .. location)
 end, { desc = 'Copy file relative path and line number to clipboard' })
+
+vim.keymap.set({ 'x', 'o' }, 'ag', 'al', { desc = 'Buffer (ggG or something like this)' })
