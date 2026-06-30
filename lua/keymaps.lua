@@ -45,6 +45,7 @@ vim.keymap.set('i', '<C-u>', '<Esc>gUiw`]a', { desc = '[u]pper case the word bef
 
 -- Restart neovim
 vim.keymap.set('n', '<leader>n', '<cmd>restart<CR>', { desc = '[n]eovim restart' })
+vim.keymap.set('n', '<leader>N', '<cmd>restart!<CR>', { desc = '[N]eovim restart!' })
 
 -- Window movement
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
