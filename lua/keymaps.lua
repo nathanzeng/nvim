@@ -89,11 +89,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Copies the file and line number to clipboard
-vim.keymap.set('n', '<leader>a', function()
+-- Copies the filename (with path relative to cwd)
+vim.keymap.set('n', '<leader>af', function()
+  local filename = vim.fn.expand('%:.')
+  vim.fn.setreg('+', filename)
+  vim.notify('Copied to clipboard: ' .. filename)
+end, { desc = 'Copy file relative path to clipboard' })
+
+-- Copies the filename (with path relative to cwd) and line number to clipboard
+vim.keymap.set('n', '<leader>al', function()
   local location = ('%s line %s'):format(vim.fn.expand('%:.'), vim.api.nvim_win_get_cursor(0)[1])
   vim.fn.setreg('+', location)
   vim.notify('Copied to clipboard: ' .. location)
 end, { desc = 'Copy file relative path and line number to clipboard' })
-
-vim.keymap.set({ 'x', 'o' }, 'ag', 'al', { desc = 'Buffer (ggG or something like this)' })

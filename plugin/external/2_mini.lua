@@ -2,19 +2,11 @@ vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
 -- Based off looking at Mini Max, this stuff doesn't need to load on first draw
 vim.schedule(function()
-  -- Better Around/Inside textobjects
-  --
-  -- Examples:
-  --  - va)  - [V]isually select [A]round [)]paren
-  --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-  --  - ci'  - [C]hange [I]nside [']quote
   require('mini.ai').setup({ n_lines = 500 })
+  -- These neovim defaults conflict with mini.ai
+  vim.keymap.set({ 'x', 'o' }, 'ag', 'al', { desc = 'Buffer (ggG or something like this)' })
+  vim.keymap.set({ 'x', 'o' }, 'ir', 'il', { desc = '[r]ow (line)' })
 
-  -- Add/delete/replace surroundings (brackets, quotes, etc.)
-  --
-  -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-  -- - sd'   - [S]urround [D]elete [']quotes
-  -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
   require('mini.bufremove').setup()
@@ -109,6 +101,3 @@ require('mini.notify').setup({
   -- },
 })
 vim.notify = MiniNotify.make_notify()
-
--- nvim dev testing
--- require('mini.sessions').setup()
