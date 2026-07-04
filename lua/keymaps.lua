@@ -102,3 +102,6 @@ vim.keymap.set('n', '<leader>al', function()
   vim.fn.setreg('+', location)
   vim.notify('Copied to clipboard: ' .. location)
 end, { desc = 'Copy file relative path and line number to clipboard' })
+
+vim.keymap.set('n', '<leader>c', ':', { desc = '[c]ommand' })
+-- vim.keymap.set('n', ':', '<NOP>')
