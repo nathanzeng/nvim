@@ -105,3 +105,7 @@ end, { desc = 'Copy file relative path and line number to clipboard' })
 
 vim.keymap.set('n', '<leader>c', ':', { desc = '[c]ommand' })
 -- vim.keymap.set('n', ':', '<NOP>')
+
+-- QOL to reselect the selection after indent/dedent
+vim.keymap.set('x', '>', '>gv', { desc = 'Indent visual selection' })
+vim.keymap.set('x', '<', '<gv', { desc = 'Dedent visual selection' })
