@@ -2,7 +2,9 @@
 -- https://www.reddit.com/r/neovim/comments/1f7jj15/how_do_you_work_without_diffviewnvim/
 
 vim.schedule(function()
-  vim.pack.add({ 'https://github.com/dlyongemallo/diffview.nvim' })
+  vim.pack.add({
+    { src = 'https://github.com/dlyongemallo/diffview.nvim', version = 'd5c09986681a671613aef0226ef409c01561d64c' },
+  })
 
   local shared_keymaps = {
     {
