@@ -37,8 +37,10 @@ vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = '[p]aste from system c
 vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = '[P]aste from system clipboard' })
 vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = '[y]ank into system clipboard' })
 vim.keymap.set('n', '<leader>Y', '"+y$', { desc = '[Y]ank into system clipboard' })
--- Paste from yank register
-vim.keymap.set({ 'n', 'x' }, '<leader>op', '"0p', { desc = 'Paste from yank register "0' })
+-- Paste does not clobber default register with deleted text (visual mode)
+-- See `:h v_P` and `:h v_p`
+vim.keymap.set('x', 'p', 'P')
+vim.keymap.set('x', 'P', 'p')
 
 -- Note: native functionality is to delete everything on the line preceding the cursor
 vim.keymap.set('i', '<C-u>', '<Esc>gUiw`]a', { desc = '[u]pper case the word before cursor' })
