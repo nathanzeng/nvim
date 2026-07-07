@@ -41,6 +41,8 @@ vim.keymap.set('n', '<leader>Y', '"+y$', { desc = '[Y]ank into system clipboard'
 -- See `:h v_P` and `:h v_p`
 vim.keymap.set('x', 'p', 'P')
 vim.keymap.set('x', 'P', 'p')
+-- Paste from yank register
+vim.keymap.set({ 'n', 'x' }, '<leader>op', '"0p', { desc = 'Paste from yank register "0' })
 
 -- Note: native functionality is to delete everything on the line preceding the cursor
 vim.keymap.set('i', '<C-u>', '<Esc>gUiw`]a', { desc = '[u]pper case the word before cursor' })
