@@ -35,3 +35,12 @@ local specs = {
 
 require('nightfox').setup({ specs = specs })
 vim.cmd.colorscheme('nordfox')
+
+-- Cursor coloring
+vim.api.nvim_set_hl(0, 'BlueCursor', { bg = '#8cafd2' })
+vim.api.nvim_set_hl(0, 'GreenCursor', { bg = '#a3be8c' })
+-- TODO: little annoying that i can't target select mode
+-- See :h guicursor
+-- Block cursor in insert-like modes, underline for replace and operator pending
+-- Change color for insert/visual
+vim.o.guicursor = 'i-t-c:block-GreenCursor,v:block-BlueCursor,r-o:hor20'

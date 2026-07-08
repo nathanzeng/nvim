@@ -8,20 +8,13 @@ vim.o.relativenumber = true
 -- Disable status line since I'm using lualine to put that at the top in winbar
 vim.o.laststatus = 0
 
--- COMMAND LINE OPTIONS
+-- [[ Command Line Stuff ]]
 -- Don't show the mode
 vim.o.showmode = false
 -- Don't show this ruler thing that is line number and file progress
 vim.o.ruler = false
 -- Show partial command flickers j and k when scrolling
 vim.o.showcmd = false
-
-vim.api.nvim_set_hl(0, 'InsertCursor', { bg = '#81a1c1' })
-vim.api.nvim_set_hl(0, 'GreenCursor', { bg = '#a3be8c' })
--- TODO: little annoying that i can't target select mode
--- See :h guicursor
--- Block cursor in all modes, change color for insert modes, underline for replace
-vim.o.guicursor = 'i-t-c:block-GreenCursor,r-o:hor20'
 
 -- Only highlight the cursorline number
 vim.o.cursorline = true
