@@ -81,7 +81,11 @@ vim.schedule(function()
 end)
 
 -- Icons and mock the nvim-tree one
-require('mini.icons').setup()
+require('mini.icons').setup({
+  filetype = {
+    php = { glyph = '󰟆' },
+  },
+})
 MiniIcons.mock_nvim_web_devicons()
 
 -- LSP and custom notifications
