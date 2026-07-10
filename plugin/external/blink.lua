@@ -32,10 +32,6 @@ require('blink.cmp').setup({
 
     -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
     --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-
-    -- NOTE: remove when done training
-    ['<Up>'] = false,
-    ['<Down>'] = false,
   },
 
   completion = {
@@ -57,19 +53,6 @@ require('blink.cmp').setup({
 
   -- Shows a signature help window while you type arguments for a function
   signature = { enabled = true },
-
-  cmdline = {
-    -- Do not like neovim default of 'show_and_insert_or_accept_single'
-    keymap = { ['<Tab>'] = { 'show', 'select_next' } },
-    completion = {
-      list = {
-        selection = {
-          -- When `true`, inserts the completion item automatically when selecting it
-          auto_insert = false,
-        },
-      },
-    },
-  },
 })
 
 -- Indent lines and text object
