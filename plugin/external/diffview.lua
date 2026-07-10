@@ -3,7 +3,7 @@
 
 vim.schedule(function()
   vim.pack.add({
-    'https://github.com/dlyongemallo/diffview.nvim',
+    'https://github.com/dlyongemallo/diffview-plus.nvim',
   })
 
   local shared_keymaps = {
@@ -33,11 +33,27 @@ vim.schedule(function()
     },
     {
       'n',
+      '<down>',
+      function()
+        require('diffview.config').actions.select_next_entry()
+      end,
+      { desc = 'next entry' },
+    },
+    {
+      'n',
       '<C-p>',
       function()
         require('diffview.config').actions.select_prev_entry()
       end,
       { desc = '[p]rev entry' },
+    },
+    {
+      'n',
+      '<up>',
+      function()
+        require('diffview.config').actions.select_prev_entry()
+      end,
+      { desc = 'prev entry' },
     },
   }
 
