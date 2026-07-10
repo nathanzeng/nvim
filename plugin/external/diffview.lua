@@ -3,7 +3,7 @@
 
 vim.schedule(function()
   vim.pack.add({
-    { src = 'https://github.com/dlyongemallo/diffview.nvim', version = 'd5c09986681a671613aef0226ef409c01561d64c' },
+    'https://github.com/dlyongemallo/diffview.nvim',
   })
 
   local shared_keymaps = {
