@@ -99,11 +99,9 @@ require('mini.notify').setup({
       row = vim.o.lines - vim.o.cmdheight,
     },
   },
-  -- For some reason, the lua lsp on neovim repo kept reloading
-  -- lsp_progress = {
-  --   enable = false,
-  -- },
 })
+-- Nightfox defaults to having floating windows darker
+vim.api.nvim_set_hl(0, 'MiniNotifyNormal', { link = 'Normal' })
 vim.notify = MiniNotify.make_notify()
 
 require('mini.move').setup({
