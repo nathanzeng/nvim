@@ -39,7 +39,7 @@ vim.o.splitbelow = true
 
 -- Show various whitespace characters
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.listchars = 'trail:·,nbsp:␣,tab:»·'
 
 -- These will get overridden by .editorconfig
 vim.o.expandtab = true -- Use spaces instead of tabs
