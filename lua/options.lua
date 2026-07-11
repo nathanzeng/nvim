@@ -78,3 +78,6 @@ vim.o.confirm = true
 vim.o.winborder = 'rounded'
 
 vim.o.swapfile = false
+
+-- Defaults minus terminal (terminal state isn't preserved anyway)
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize'
