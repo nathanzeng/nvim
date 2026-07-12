@@ -1,3 +1,4 @@
+-- NOTE: unmodified from nvim-lspconfig
 -- json-lsp in mason
 
 ---@brief
