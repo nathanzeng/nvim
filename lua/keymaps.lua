@@ -113,3 +113,6 @@ vim.keymap.set('n', '<leader>c', ':', { desc = '[c]ommand' })
 -- QOL to reselect the selection after indent/dedent
 vim.keymap.set('x', '>', '>gv', { desc = 'Indent visual selection' })
 vim.keymap.set('x', '<', '<gv', { desc = 'Dedent visual selection' })
+
+-- Need to recursively map since matchit plugin extends % functionality
+vim.keymap.set({ 'n', 'x', 'o' }, 'M', '%', { remap = true, desc = '[M]atch it' })
