@@ -57,10 +57,6 @@
       "rev": "b8c8aa91f42055d7f69012587cde4f1d99f2a701",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
-    "nvim-lspconfig": {
-      "rev": "d6ac7a0d46555d44bf21f4f9c65f5201f818b475",
-      "src": "https://github.com/neovim/nvim-lspconfig"
-    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"

@@ -1,6 +1,5 @@
 vim.pack.add({
   'https://github.com/mason-org/mason.nvim',
-  'https://github.com/neovim/nvim-lspconfig',
 })
 require('mason').setup()
 
@@ -220,7 +219,6 @@ local servers = {
 
   eslint = {},
 
-  stylua = {},
   -- NOTE: copied straight from 'lsp-config-all' in neovim help
   lua_ls = {
     on_init = function(client)
@@ -267,9 +265,6 @@ local servers = {
       Lua = {},
     },
   },
-
-  -- json-lsp in mason
-  jsonls = {},
 }
 
 -- gitignored file for language servers that don't need to be tracked
@@ -288,3 +283,16 @@ end
 -- I need this line so that vue custom components get a different color from <div>
 -- https://github.com/vuejs/language-tools/wiki/Neovim
 vim.api.nvim_set_hl(0, '@lsp.type.component', { link = '@type' })
+
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  once = true,
+  callback = function()
+    local config_servers = vim
+      .iter(vim.api.nvim_get_runtime_file('lsp/*.lua', true))
+      :map(function(file)
+        return vim.fn.fnamemodify(file, ':t:r')
+      end)
+      :totable()
+    vim.lsp.enable(config_servers)
+  end,
+})
