@@ -57,7 +57,7 @@ local toggleTerminal = function()
   end
 end
 
-vim.keymap.set({ 'n', 't' }, '<C-t>', toggleTerminal)
+vim.keymap.set({ 'n', 't' }, '<C-s>', toggleTerminal, { desc = '[s]hell' })
 
 -- Autocommand to enter insert mode in terminals
 vim.api.nvim_create_autocmd({ 'BufEnter', 'TermOpen' }, {
