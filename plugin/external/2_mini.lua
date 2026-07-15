@@ -9,11 +9,16 @@ vim.schedule(function()
 
   require('mini.surround').setup()
 
-  require('mini.bufremove').setup()
   -- Don't delete the window when deleting the buffer (splits)
+  require('mini.bufremove').setup()
+
   vim.keymap.set('n', '<leader>bd', function()
     MiniBufremove.delete()
   end, { desc = '[b]uffer [d]elete' })
+
+  vim.keymap.set('n', '<leader>bw', function()
+    MiniBufremove.wipeout()
+  end, { desc = '[b]uffer [w]ipeout' })
 
   -- Highlight hex colors
   local hipatterns = require('mini.hipatterns')
