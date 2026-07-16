@@ -29,7 +29,7 @@ vim.keymap.set('n', '<BS>', '<C-^>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- q to quit and leader q to macro
-vim.keymap.set('n', 'q', '<cmd>q<CR>', { desc = '[q]uit window' })
+vim.keymap.set('n', 'q', '<cmd>hide<CR>', { desc = '[q]uit window' })
 vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 
 -- Paste and yank to system clipboard
