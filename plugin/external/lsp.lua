@@ -37,10 +37,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --  This is where a variable was first declared, or where a function is defined, etc.
     --  To jump back, press <C-t>.
     map('<leader>ld', require('telescope.builtin').lsp_definitions, '[d]efinition')
+    map('gd', require('telescope.builtin').lsp_definitions, '[d]efinition')
 
     -- NOTE: This is not Goto Definition, this is Goto Declaration.
     --  For example, in C this would take you to the header.
     map('<leader>lD', vim.lsp.buf.declaration, '[D]eclaration')
+    map('gD', vim.lsp.buf.declaration, '[D]eclaration')
 
     -- Fuzzy find all the symbols in your current document.
     --  Symbols are things like variables, functions, types, etc.
