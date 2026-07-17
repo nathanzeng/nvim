@@ -14,9 +14,6 @@ vim.schedule(function()
   -- Telescope picker. This is really useful to discover what Telescope can
   -- do as well as how to actually do it!
   require('telescope').setup({
-    -- You can put your default mappings / updates / etc. in here
-    --  All the info you're looking for is in `:help telescope.setup()`
-    --
     defaults = {
       mappings = {
         i = {
@@ -31,8 +28,6 @@ vim.schedule(function()
         prompt_position = 'top',
       },
       sorting_strategy = 'ascending',
-      -- This makes it so that when you scroll to the end of the results list, you don't wrap
-      scroll_strategy = 'limit',
       path_display = {
         'filename_first',
       },
