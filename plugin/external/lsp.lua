@@ -224,6 +224,7 @@ local servers = {
   lua_ls = {},
   -- json-lsp in mason
   jsonls = {},
+  clangd = {},
 }
 
 -- gitignored file for language servers that don't need to be tracked
