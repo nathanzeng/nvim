@@ -55,6 +55,14 @@ vim.schedule(function()
       end,
       { desc = 'prev entry' },
     },
+    {
+      'n',
+      '<C-x>',
+      function()
+        require('diffview.config').actions.restore_entry()
+      end,
+      { desc = 'restore entry' },
+    },
   }
 
   -- View keymaps are my custom keymaps, plus some of the default file panel ones
