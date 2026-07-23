@@ -6,8 +6,6 @@ require('oil').setup({
   },
   -- These keymaps apply to oil buffers only
   keymaps = {
-    -- Collides with floaterminal, was originally open file in a new tab
-    ['<C-t>'] = false,
     -- Live grep in current directory
     ['<leader>fg'] = {
       function()
