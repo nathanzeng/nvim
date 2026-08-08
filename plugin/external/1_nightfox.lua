@@ -47,3 +47,6 @@ vim.o.guicursor = 'i-t:block-GreenCursor,v:block-BlueCursor,r-o:hor20'
 
 -- Showkeys
 -- vim.pack.add({ 'https://github.com/NvChad/showkeys' })
+
+vim.api.nvim_set_hl(0, 'WinBar', { link = 'StatusLine' })
+vim.o.winbar = vim.o.statusline
