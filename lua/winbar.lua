@@ -1,5 +1,14 @@
-vim.api.nvim_set_hl(0, 'winbar_mode', { bg = '#88C0D0', fg = '#3B4252' })
-vim.api.nvim_set_hl(0, 'winbar_mode_invert', { bg = '#3B4252', fg = '#88C0D0' })
+vim.api.nvim_set_hl(0, 'winbar_mode', { fg = '#2e3440', bg = '#88C0D0' })
+vim.api.nvim_set_hl(0, 'winbar_mode_invert', { fg = '#88C0D0', bg = '#2e3440' })
+
+vim.api.nvim_set_hl(0, 'winbar_filename', { fg = '#2e3440', bg = '#88C0D0', bold = true })
+vim.api.nvim_set_hl(
+  0,
+  'winbar_mode_filename_invert',
+  { fg = '#88C0D0', bg = '#2e3440', bold = true }
+)
+
+vim.api.nvim_set_hl(0, 'winbar_c', { fg = '#8FBCBB', bg = '#4C566A' })
 
 local mode_component = function()
   -- Note: termcodes \19 and \22 are ^S and ^V
@@ -52,17 +61,29 @@ local mode_component = function()
   })
 end
 
+local filename_component = function()
+  return table.concat({
+    '%#winbar_filename_invert#',
+    '%#winbar_filename#' .. vim.fn.expand('%:t'),
+    '%#winbar_filename_invert#',
+  })
+end
+
+local function inactive()
+  return '%#winbar_c#' .. vim.fn.expand('%:p:.')
+end
+
 return {
   render = function()
     local active_win = vim.fn.win_getid()
     local status_win = tonumber(vim.g.actual_curwin)
 
     if status_win ~= active_win then
-      return 'Statusline for inactive windows'
+      return inactive()
     end
 
     return table.concat({
-      'Statusline left-aligned stuff',
+      filename_component(),
       '%=', -- Left/right separator
       mode_component(),
     })
