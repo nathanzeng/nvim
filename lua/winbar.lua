@@ -62,9 +62,15 @@ local mode_component = function()
 end
 
 local filename_component = function()
+  local expr = '%t%m'
+
+  if vim.b.nvim_dir ~= nil then
+    expr = '%f'
+  end
+
   return table.concat({
     '%#winbar_filename_invert#',
-    '%#winbar_filename#' .. vim.fn.expand('%:t'),
+    '%#winbar_filename#' .. expr,
     '%#winbar_filename_invert#',
   })
 end
