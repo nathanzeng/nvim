@@ -10,6 +10,7 @@ vim.api.nvim_set_hl(
 
 vim.api.nvim_set_hl(0, 'winbar_c', { fg = '#8FBCBB', bg = '#4C566A' })
 
+-- TODO: for some reason the operating pending and replace do not work
 local mode_component = function()
   -- Note: termcodes \19 and \22 are ^S and ^V
   ---- stylua: ignore
@@ -79,6 +80,13 @@ local function inactive()
   return '%#winbar_c#' .. vim.fn.expand('%:p:.')
 end
 
+-- TODO: I would like to remove the colon from the diagnostics
+-- likely need to tweak vim.diagnostic.status()
+-- these also don't update and the exact instant that i want
+local function diagnostics()
+  return " %{% luaeval('(package.loaded[''vim.diagnostic''] and next(vim.diagnostic.count()) and vim.diagnostic.status() .. '' '') or '''' ') %}"
+end
+
 return {
   render = function()
     local active_win = vim.fn.win_getid()
@@ -90,6 +98,7 @@ return {
 
     return table.concat({
       filename_component(),
+      diagnostics(),
       '%=', -- Left/right separator
       mode_component(),
     })
