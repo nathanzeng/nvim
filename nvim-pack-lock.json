@@ -69,10 +69,6 @@
       "rev": "d7220b55e16ed3c04e88086256def5d282429493",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
-    "plenary.nvim": {
-      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
     "render-markdown.nvim": {
       "rev": "adc086861a246b66d5243757ef36593bc169c901",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
@@ -86,8 +82,9 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "1e1bab730218eaf97fce743be3f56e51075928ac",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
+      "rev": "3b30411f25f2069b07a012c976e7b203831785c4",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "'feat/neoplen'"
     },
     "unnest.nvim": {
       "rev": "e9e269134ad85eb45c4e1fa3654801be0d3641b7",
