@@ -1,9 +1,9 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "086968f6ceb25ed9969179d8a18d962d67b06c5a",
-      "src": "https://github.com/nathanzeng/blink.cmp",
-      "version": "'nathan-v1'"
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'v1.10.2'"
     },
     "blink.indent": {
       "rev": "8b69b9262891fe81fe728fe6a52fa2a84dd5d5e0",

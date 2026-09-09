@@ -1,7 +1,7 @@
 vim.pack.add({
   {
-    src = 'https://github.com/nathanzeng/blink.cmp',
-    version = 'nathan-v1',
+    src = 'https://github.com/saghen/blink.cmp',
+    version = 'v1.10.2',
   },
   'https://github.com/saghen/blink.indent',
 })
