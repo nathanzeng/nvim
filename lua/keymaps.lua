@@ -50,8 +50,24 @@ vim.keymap.set(
   { desc = ':help CTRL-L-default' }
 )
 
--- q to quit and leader q to macro
-vim.keymap.set('n', 'q', '<cmd>hide<CR>', { desc = '[q]uit window' })
+-- q to quit
+vim.keymap.set('n', 'q', function()
+  local ok, err = pcall(vim.cmd.hide)
+  if ok then
+    return
+  end
+
+  if err:match('E444') then
+    local confirm = vim.fn.confirm('Exit Neovim?', '&yes\n&no')
+    if confirm == 1 then
+      vim.cmd.quit()
+    end
+  else
+    error(err)
+  end
+end)
+
+-- Leader q get normal q
 vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 
 -- Paste does not clobber default register with deleted text (visual mode)
