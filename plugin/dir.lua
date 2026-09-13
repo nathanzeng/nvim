@@ -211,15 +211,6 @@ api.nvim_create_autocmd('FileType', {
       end
     end, { desc = 'Open entry in external program', buf = 0 })
 
-    -- Open entry in vsplit
-    vim.keymap.set('n', '<C-v>', function()
-      vim.cmd.vsplit()
-      vim.cmd([[execute "normal \<CR>"]])
-      vim.cmd.wincmd('p')
-      vim.cmd.edit('#')
-      vim.cmd.wincmd('p')
-    end, { desc = 'Open dir entry in vertical split', buf = 0 })
-
     -- Telescope stuff
     vim.keymap.set('n', '<leader>ff', function()
       require('telescope.builtin').find_files({
