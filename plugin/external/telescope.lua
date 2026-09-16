@@ -18,6 +18,7 @@ vim.schedule(function()
       mappings = {
         i = {
           ['<C-y>'] = 'select_default',
+          ['<C-h>'] = 'select_horizontal',
         },
       },
 
