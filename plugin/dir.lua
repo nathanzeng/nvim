@@ -48,6 +48,21 @@ api.nvim_create_autocmd('FileType', {
       vim.cmd.edit('#')
     end, { desc = 'Close dir buffer', buf = 0 })
 
+    -- Don't think I need visual block mode for dir buffers
+    vim.keymap.set(
+      'n',
+      '<C-v>',
+      '<Plug>(nvim-dir-vsplit)',
+      { desc = 'Open dir entry in vsplit', buf = 0 }
+    )
+    -- Use a to open in horizontal split
+    vim.keymap.set(
+      'n',
+      'a',
+      '<Plug>(nvim-dir-split)',
+      { desc = 'Open dir entry in split', buf = 0 }
+    )
+
     -- Add entry
     vim.keymap.set('n', 'o', function()
       vim.ui.input({ prompt = 'Add: ' }, function(input)
