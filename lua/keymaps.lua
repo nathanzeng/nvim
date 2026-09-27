@@ -146,6 +146,35 @@ vim.keymap.set('n', '<leader>al', function()
   vim.notify('Copied to clipboard: ' .. location)
 end, { desc = 'Copy file relative path and line number to clipboard' })
 
+-- Copies the visual selection to the clipboard
+vim.keymap.set('x', '<leader>a', function()
+  local start = vim.fn.getpos('v')
+  local finish = vim.fn.getpos('.')
+
+  if start[2] > finish[2] or (start[2] == finish[2] and start[3] > finish[3]) then
+    start, finish = finish, start
+  end
+
+  if vim.fn.mode() == 'V' then
+    start[3] = 1
+    finish[3] = math.max(1, #vim.fn.getline(finish[2]))
+  end
+
+  vim.fn.setreg(
+    '+',
+    string.format(
+      '%s\nStart: line %d, col %d | End: line %d, col %d',
+      vim.fn.expand('%:~'),
+      start[2],
+      start[3],
+      finish[2],
+      finish[3]
+    )
+  )
+
+  vim.notify('Visual selection copied to clipboard')
+end, { desc = 'Print visual selection coordinates' })
+
 -- QOL to reselect the selection after indent/dedent
 vim.keymap.set('x', '>', '>gv', { desc = 'Indent visual selection' })
 vim.keymap.set('x', '<', '<gv', { desc = 'Dedent visual selection' })
