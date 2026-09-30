@@ -245,6 +245,8 @@ vim.api.nvim_create_autocmd('User', {
   group = augroup,
   pattern = 'DirReadPost',
   callback = function()
+    -- TODO: apparently this is what causes us to open to not the first entry
+    -- try vim.fn.winsaveview() and winrestview()
     -- Hide any entry named `.DS_Store`
     vim.cmd([[silent keeppatterns g/^\.DS_Store/d _]])
   end,
