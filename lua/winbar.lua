@@ -1,4 +1,5 @@
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#eceff4' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#d8dee9' })
 
 vim.api.nvim_set_hl(0, 'winbar_mode', { fg = '#2e3440', bg = '#88C0D0' })
 vim.api.nvim_set_hl(0, 'winbar_mode_invert', { fg = '#88C0D0', bg = '#2e3440' })
@@ -60,29 +61,17 @@ local mode_component = function()
   })
 end
 
-local filename_component = function()
-  local expr = '%t%m'
-
-  if vim.b.nvim_dir ~= nil then
-    expr = '%f'
-  end
-
-  return table.concat({
-    '%#winbar_filename_invert#',
-    '%#winbar_filename#' .. expr,
-    '%#winbar_filename_invert#',
-  })
-end
-
 local function inactive()
-  return '%#winbar_c#' .. vim.fn.expand('%:p:.')
+  return ''
 end
 
--- TODO: I would like to remove the colon from the diagnostics
--- likely need to tweak vim.diagnostic.status()
--- these also don't update and the exact instant that i want
-local function diagnostics()
-  return " %{% luaeval('(package.loaded[''vim.diagnostic''] and next(vim.diagnostic.count()) and vim.diagnostic.status() .. '' '') or '''' ') %}"
+local function git_branch_component()
+  local branch = vim.g.gitsigns_head or ''
+  return table.concat({
+    '%#winbar_mode_invert#',
+    '%#winbar_mode#' .. branch,
+    '%#winbar_mode_invert#',
+  })
 end
 
 return {
@@ -95,10 +84,8 @@ return {
     end
 
     return table.concat({
-      filename_component(),
-      diagnostics(),
-      '%=', -- Left/right separator
       mode_component(),
+      git_branch_component(),
     })
   end,
 }
