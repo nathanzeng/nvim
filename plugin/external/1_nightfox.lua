@@ -43,5 +43,4 @@ vim.opt.guicursor:append('v:VisualCursor,t:ver25')
 -- Showkeys
 -- vim.pack.add({ 'https://github.com/NvChad/showkeys' })
 
-vim.api.nvim_set_hl(0, 'WinBar', { link = 'StatusLine' })
-vim.o.winbar = "%{%v:lua.require'winbar'.render()%}"
+vim.o.statusline = "%{%v:lua.require'winbar'.render()%}"

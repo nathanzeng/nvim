@@ -1,12 +1,10 @@
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#eceff4' })
+
 vim.api.nvim_set_hl(0, 'winbar_mode', { fg = '#2e3440', bg = '#88C0D0' })
 vim.api.nvim_set_hl(0, 'winbar_mode_invert', { fg = '#88C0D0', bg = '#2e3440' })
 
 vim.api.nvim_set_hl(0, 'winbar_filename', { fg = '#2e3440', bg = '#88C0D0', bold = true })
-vim.api.nvim_set_hl(
-  0,
-  'winbar_mode_filename_invert',
-  { fg = '#88C0D0', bg = '#2e3440', bold = true }
-)
+vim.api.nvim_set_hl(0, 'winbar_filename_invert', { fg = '#88C0D0', bg = '#2e3440', bold = true })
 
 vim.api.nvim_set_hl(0, 'winbar_c', { fg = '#8FBCBB', bg = '#4C566A' })
 
