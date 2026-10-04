@@ -1,8 +1,8 @@
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#2e3440' })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#2e3440' })
 
-vim.api.nvim_set_hl(0, 'statusline_mode', { fg = '#3B4252', bg = '#88C0D0' })
-vim.api.nvim_set_hl(0, 'statusline_mode_invert', { fg = '#88C0D0', bg = '#2e3440' })
+vim.api.nvim_set_hl(0, 'statusline_mode', { fg = '#88C0D0', bg = '#4C566A' })
+vim.api.nvim_set_hl(0, 'statusline_mode_invert', { fg = '#4C566A', bg = '#2e3440' })
 
 vim.api.nvim_create_autocmd('ModeChanged', {
   group = vim.api.nvim_create_augroup('StatuslineMode', { clear = true }),
