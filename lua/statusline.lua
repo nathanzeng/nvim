@@ -1,13 +1,8 @@
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#eceff4' })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#d8dee9' })
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#2e3440' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#2e3440' })
 
-vim.api.nvim_set_hl(0, 'winbar_mode', { fg = '#2e3440', bg = '#88C0D0' })
-vim.api.nvim_set_hl(0, 'winbar_mode_invert', { fg = '#88C0D0', bg = '#2e3440' })
-
-vim.api.nvim_set_hl(0, 'winbar_filename', { fg = '#2e3440', bg = '#88C0D0', bold = true })
-vim.api.nvim_set_hl(0, 'winbar_filename_invert', { fg = '#88C0D0', bg = '#2e3440', bold = true })
-
-vim.api.nvim_set_hl(0, 'winbar_c', { fg = '#8FBCBB', bg = '#4C566A' })
+vim.api.nvim_set_hl(0, 'statusline_mode', { fg = '#88C0D0', bg = '#4C566A' })
+vim.api.nvim_set_hl(0, 'statusline_mode_invert', { fg = '#4C566A', bg = '#2e3440' })
 
 -- TODO: for some reason the operating pending and replace do not work
 local mode_component = function()
@@ -55,9 +50,9 @@ local mode_component = function()
   local mode = mode_settings[vim.fn.mode()] or {}
 
   return table.concat({
-    '%#winbar_mode_invert#',
-    '%#winbar_mode#' .. mode.name,
-    '%#winbar_mode_invert#',
+    '%#statusline_mode_invert#',
+    '%#statusline_mode#' .. mode.name,
+    '%#statusline_mode_invert#',
   })
 end
 
@@ -68,9 +63,9 @@ end
 local function git_branch_component()
   local branch = vim.g.gitsigns_head or ''
   return table.concat({
-    '%#winbar_mode_invert#',
-    '%#winbar_mode#' .. branch,
-    '%#winbar_mode_invert#',
+    '%#statusline_mode_invert#',
+    '%#statusline_mode#' .. ' ' .. branch,
+    '%#statusline_mode_invert#',
   })
 end
 
@@ -85,7 +80,9 @@ return {
 
     return table.concat({
       mode_component(),
+      ' ',
       git_branch_component(),
+      '%*',
     })
   end,
 }

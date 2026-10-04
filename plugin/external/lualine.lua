@@ -47,15 +47,6 @@ local function line_only()
   return ' ' .. vim.fn.line('.') .. '/' .. vim.api.nvim_buf_line_count(0)
 end
 
-local function truncateToFirstChar(min_width)
-  return function(str)
-    if vim.fn.winwidth(0) < min_width then
-      return str:sub(1, 1)
-    end
-    return str
-  end
-end
-
 local function path()
   -- Cannot do just `:h` because buffers jumped to with LSP will display full path
   local dir = vim.fn.expand('%:p:.:h')
@@ -79,16 +70,21 @@ local function dir_name()
   end
 end
 
+local function spacer()
+  return ' '
+end
+
 -- Extension for dir.lua
 local dir = {
   winbar = {
     lualine_a = {
       dir_name,
     },
-    lualine_b = { { 'branch', icon = '' } },
+    lualine_b = {},
+    lualine_c = { spacer },
     lualine_x = {},
     lualine_y = { cursor_pos },
-    lualine_z = { 'mode' },
+    lualine_z = {},
   },
   filetypes = { 'directory' },
 }
