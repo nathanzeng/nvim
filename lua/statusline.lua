@@ -4,7 +4,14 @@ vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#2e3440' })
 vim.api.nvim_set_hl(0, 'statusline_mode', { fg = '#88C0D0', bg = '#4C566A' })
 vim.api.nvim_set_hl(0, 'statusline_mode_invert', { fg = '#4C566A', bg = '#2e3440' })
 
--- TODO: for some reason the operating pending and replace do not work
+vim.api.nvim_create_autocmd('ModeChanged', {
+  group = vim.api.nvim_create_augroup('StatuslineMode', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.cmd.redrawstatus()
+  end,
+})
+
 local mode_component = function()
   -- Note: termcodes \19 and \22 are ^S and ^V
   ---- stylua: ignore
@@ -47,7 +54,7 @@ local mode_component = function()
     ['t'] = { name = 'TERMINAL', hl = 'Command' },
   }
 
-  local mode = mode_settings[vim.fn.mode()] or {}
+  local mode = mode_settings[vim.fn.mode(1)] or {}
 
   return table.concat({
     '%#statusline_mode_invert#',
