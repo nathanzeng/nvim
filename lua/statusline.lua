@@ -1,79 +1,24 @@
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#2e3440', fg = '#2e3440' })
 vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = '#2e3440', fg = '#2e3440' })
 
-vim.api.nvim_set_hl(0, 'statusline_mode', { fg = '#88C0D0', bg = '#4C566A' })
-vim.api.nvim_set_hl(0, 'statusline_mode_invert', { fg = '#4C566A', bg = '#2e3440' })
+vim.api.nvim_set_hl(0, 'statusline_branch', { fg = '#88C0D0', bg = '#4C566A' })
+vim.api.nvim_set_hl(0, 'statusline_branch_invert', { fg = '#4C566A', bg = '#2e3440' })
 
-vim.api.nvim_create_autocmd('ModeChanged', {
-  group = vim.api.nvim_create_augroup('StatuslineMode', { clear = true }),
-  pattern = '*',
-  callback = function()
-    vim.cmd.redrawstatus()
-  end,
-})
+vim.api.nvim_set_hl(0, 'inactive_statusline_branch', { fg = '#4C566A', bg = '#2e3440' })
 
-local mode_component = function()
-  -- Note: termcodes \19 and \22 are ^S and ^V
-  ---- stylua: ignore
-  local mode_settings = {
-    ['n'] = { name = 'NORMAL', hl = 'Normal' },
-    ['no'] = { name = 'OP-PENDING', hl = 'Pending' },
-    ['nov'] = { name = 'OP-PENDING', hl = 'Pending' },
-    ['noV'] = { name = 'OP-PENDING', hl = 'Pending' },
-    ['no\22'] = { name = 'OP-PENDING', hl = 'Pending' },
-    ['niI'] = { name = 'NORMAL', hl = 'Normal' },
-    ['niR'] = { name = 'NORMAL', hl = 'Normal' },
-    ['niV'] = { name = 'NORMAL', hl = 'Normal' },
-    ['nt'] = { name = 'NORMAL', hl = 'Normal' },
-    ['ntT'] = { name = 'NORMAL', hl = 'Normal' },
-    ['v'] = { name = 'VISUAL', hl = 'Visual' },
-    ['vs'] = { name = 'VISUAL', hl = 'Visual' },
-    ['V'] = { name = 'V-LINE', hl = 'Visual' },
-    ['Vs'] = { name = 'V-LINE', hl = 'Visual' },
-    ['\22'] = { name = 'V-BLOCK', hl = 'Visual' },
-    ['\22s'] = { name = 'V-BLOCK', hl = 'Visual' },
-    ['s'] = { name = 'SELECT', hl = 'Insert' },
-    ['S'] = { name = 'S-LINE', hl = 'Normal' },
-    ['\19'] = { name = 'S-BLOCK', hl = 'Normal' },
-    ['i'] = { name = 'INSERT', hl = 'Insert' },
-    ['ic'] = { name = 'INSERT', hl = 'Insert' },
-    ['ix'] = { name = 'INSERT', hl = 'Insert' },
-    ['R'] = { name = 'REPLACE', hl = 'Replace' },
-    ['Rc'] = { name = 'REPLACE', hl = 'Replace' },
-    ['Rx'] = { name = 'REPLACE', hl = 'Replace' },
-    ['Rv'] = { name = 'V-REPLACE', hl = 'Replace' },
-    ['Rvc'] = { name = 'V-REPLACE', hl = 'Replace' },
-    ['Rvx'] = { name = 'V-REPLACE', hl = 'Replace' },
-    ['c'] = { name = 'COMMAND', hl = 'Command' },
-    ['cv'] = { name = 'EX', hl = 'Command' },
-    ['ce'] = { name = 'EX', hl = 'Command' },
-    ['r'] = { name = 'REPLACE', hl = 'Normal' },
-    ['rm'] = { name = 'MORE', hl = 'Normal' },
-    ['r?'] = { name = 'CONFIRM', hl = 'Normal' },
-    ['!'] = { name = 'SHELL', hl = 'Normal' },
-    ['t'] = { name = 'TERMINAL', hl = 'Command' },
-  }
-
-  local mode = mode_settings[vim.fn.mode(1)] or {}
-
+-- TODO: the branch does not show on initial cold start of nvim
+local function git_branch_component()
+  local branch = vim.g.gitsigns_head or ''
   return table.concat({
-    '%#statusline_mode_invert#',
-    '%#statusline_mode#' .. mode.name,
-    '%#statusline_mode_invert#',
+    '%#statusline_branch_invert#',
+    '%#statusline_branch#' .. ' ' .. branch,
+    '%#statusline_branch_invert#',
   })
 end
 
 local function inactive()
-  return ''
-end
-
-local function git_branch_component()
   local branch = vim.g.gitsigns_head or ''
-  return table.concat({
-    '%#statusline_mode_invert#',
-    '%#statusline_mode#' .. ' ' .. branch,
-    '%#statusline_mode_invert#',
-  })
+  return '%#inactive_statusline_branch#' .. ' ' .. branch
 end
 
 return {
@@ -86,8 +31,6 @@ return {
     end
 
     return table.concat({
-      mode_component(),
-      ' ',
       git_branch_component(),
       '%*',
     })

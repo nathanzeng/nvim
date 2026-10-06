@@ -111,7 +111,7 @@ require('lualine').setup({
     lualine_c = { path },
     lualine_x = {},
     lualine_y = { cursor_pos },
-    lualine_z = {},
+    lualine_z = { 'mode' },
   },
   inactive_winbar = {
     lualine_c = { { 'filename', path = 1 } },
