@@ -74,3 +74,6 @@ vim.o.swapfile = false
 
 -- Defaults minus terminal (terminal state isn't preserved anyway)
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize'
+
+-- Custom statusline
+vim.o.statusline = "%{%v:lua.require'statusline'.render()%}"

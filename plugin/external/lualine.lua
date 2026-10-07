@@ -84,7 +84,7 @@ local dir = {
     lualine_c = { spacer },
     lualine_x = {},
     lualine_y = { cursor_pos },
-    lualine_z = {},
+    lualine_z = { 'mode' },
   },
   filetypes = { 'directory' },
 }

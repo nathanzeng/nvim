@@ -42,5 +42,3 @@ vim.opt.guicursor:append('v:VisualCursor,t:ver25')
 
 -- Showkeys
 -- vim.pack.add({ 'https://github.com/NvChad/showkeys' })
-
-vim.o.statusline = "%{%v:lua.require'statusline'.render()%}"
