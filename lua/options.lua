@@ -5,9 +5,6 @@ vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
 
--- Disable status line since I'm using lualine to put that at the top in winbar
-vim.o.laststatus = 0
-
 -- [[ Command Line Stuff ]]
 -- Don't show the mode
 vim.o.showmode = false
@@ -77,3 +74,6 @@ vim.o.swapfile = false
 
 -- Defaults minus terminal (terminal state isn't preserved anyway)
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize'
+
+-- Custom statusline
+vim.o.statusline = "%{%v:lua.require'statusline'.render()%}"
