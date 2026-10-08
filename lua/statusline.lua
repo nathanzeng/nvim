@@ -8,7 +8,7 @@ local head = vim.g.gitsigns_head or ''
 
 -- Without this autocmd, the branch will show up empty on initial cold-start of nvim
 vim.api.nvim_create_autocmd('User', {
-  group = vim.api.nvim_create_augroup('statusline_nathan', { clear = true }),
+  group = vim.api.nvim_create_augroup('statusline_nathan'),
   pattern = 'GitSignsUpdate',
   callback = function()
     vim.schedule(function()
