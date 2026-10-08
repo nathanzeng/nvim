@@ -1,6 +1,6 @@
 local api = vim.api
 local TIMEOUT = 3000
-local augroup = api.nvim_create_augroup('dir_nathan')
+local augroup = api.nvim_create_augroup('dir_nathan', { clear = true })
 local default_numberwidth = vim.o.numberwidth
 local default_statuscolumn = vim.o.statuscolumn
 
