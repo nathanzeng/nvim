@@ -13,6 +13,8 @@ local function hl_line_like_yank()
   })
 end
 
+-- Global mappings
+vim.keymap.set('n', '-', '<Plug>(nvim-dir-up)', { desc = 'Open parent directory of current file' })
 vim.keymap.set('n', '_', '1-', { remap = true, desc = 'Open CWD' })
 
 -- Window-local state that depends on currently displayed buffer
