@@ -14,9 +14,8 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "diffview-plus.nvim": {
-      "rev": "ba05af7a295dcd8449bd03ebb3aead8268a5c379",
-      "src": "https://github.com/dlyongemallo/diffview-plus.nvim",
-      "version": "'ba05af7a295dcd8449bd03ebb3aead8268a5c379'"
+      "rev": "fae72d6c981075dce2e0f946f002382ce0cb44e1",
+      "src": "https://github.com/dlyongemallo/diffview-plus.nvim"
     },
     "gitsigns.nvim": {
       "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
