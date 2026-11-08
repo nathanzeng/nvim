@@ -1,6 +1,5 @@
 vim.schedule(function()
   vim.pack.add({
-    'https://github.com/nvim-telescope/telescope-ui-select.nvim',
     'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
     { src = 'https://github.com/nvim-telescope/telescope.nvim', version = 'feat/neoplen' },
   })
@@ -50,21 +49,13 @@ vim.schedule(function()
         },
       },
     },
-    extensions = {
-      ['ui-select'] = {
-        require('telescope.themes').get_dropdown(),
-        mappings = {
-          i = {
-            ['<C-y>'] = 'select_default',
-          },
-        },
-      },
-    },
   })
 
   -- Enable Telescope extensions if they are installed
   pcall(require('telescope').load_extension, 'fzf')
-  pcall(require('telescope').load_extension, 'ui-select')
+
+  -- UI select
+  vim.ui.select = require('telescope').ui_select
 
   -- See `:help telescope.builtin`
   local builtin = require('telescope.builtin')

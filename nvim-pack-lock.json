@@ -82,7 +82,7 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "3b30411f25f2069b07a012c976e7b203831785c4",
+      "rev": "aacd016bf4ea3ab4f6203750812114f0fef3ff66",
       "src": "https://github.com/nvim-telescope/telescope.nvim",
       "version": "'feat/neoplen'"
     },
