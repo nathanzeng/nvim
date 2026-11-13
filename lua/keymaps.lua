@@ -11,9 +11,12 @@ vim.keymap.set({ 'n', 'o' }, 'L', '$', { desc = 'Go to last character of line' }
 vim.keymap.set('x', 'L', '$h', { desc = 'Go to last character of line (excluding EOL)' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { desc = 'Go to first non-blank character of line' })
 
--- Bash style keymaps (these do override native maps)
-vim.keymap.set('i', '<C-e>', '<Esc>A', { desc = 'Go to end of line' })
+-- Bash style keymaps
+-- <C-e> and <C-a> have native functionality, <C-f> and <C-b> do not
+vim.keymap.set('i', '<C-e>', '<Esc>A', { desc = 'Go to [e]nd of line' })
 vim.keymap.set('i', '<C-a>', '<Esc>I', { desc = 'Go to beginning of line' })
+vim.keymap.set('i', '<C-f>', '<Right>', { desc = 'Move cursor [f]orward one' })
+vim.keymap.set('i', '<C-b>', '<Left>', { desc = 'Move cursor [b]ackward one' })
 
 -- Enter and Shift+Enter to get new line below and above without entering insert mode
 vim.keymap.set('n', '<CR>', 'o<Esc>')
