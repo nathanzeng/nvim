@@ -18,9 +18,21 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
--- Only highlight the cursorline number
-vim.o.cursorline = true
-vim.o.cursorlineopt = 'number'
+-- TODO: it break diffview file panel
+vim.api.nvim_create_autocmd('WinLeave', {
+  pattern = '*',
+  callback = function()
+    vim.wo.cursorline = false
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'TabEnter', 'BufEnter' }, {
+  pattern = '*',
+  callback = function()
+    vim.wo.cursorline = true
+    vim.wo.cursorlineopt = 'number'
+  end,
+})
 
 -- Enable break indent
 vim.o.breakindent = true
