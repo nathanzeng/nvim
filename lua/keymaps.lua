@@ -70,7 +70,7 @@ vim.keymap.set('n', 'q', function()
   end
 end)
 
--- Leader q get normal q
+-- Leader q to get default q behavior
 vim.keymap.set('n', '<leader>q', 'q', { desc = 'macro' })
 
 -- Paste does not clobber default register with deleted text (visual mode)
